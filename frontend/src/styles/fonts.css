@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "Monocraft";
+    src: url("../assets/fonts/Monocraft-nerd-fonts-patched.woff2") format("woff2"),
+    url("../assets/fonts/Monocraft-nerd-fonts-patched.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
