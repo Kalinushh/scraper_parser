@@ -3,6 +3,11 @@
 Node.js сервис, который парсит товары напрямую из HTML-разметки страниц по CSS-селекторам (Cheerio).  
 Без headless-браузеров и без клиентского JS-рендеринга.
 
+## Live demo
+https://scraper-parser.onrender.com
+
+https://scraper-parser.onrender.com/api/parse?url=https://i-ray.ru/apple-watch&product=div.b-card.category_product&title=span%5Bitemprop%3D%22name%22%5D&price=meta%5Bitemprop%3D%22price%22%5D&image=img%5Bitemprop%3D%22image%22%5D&maxPages=1&pageParam=PAGEN_1
+
 ## Что делает
 - Делает HTTP-запросы к страницам (Axios)
 - Парсит HTML (Cheerio) и извлекает данные из товарных карточек по CSS-селекторам
