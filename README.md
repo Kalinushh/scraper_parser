@@ -79,3 +79,9 @@ http://localhost:3000/api/parse?url=https://i-ray.ru/iphone&pageParam=PAGEN_1&ma
 ## Важно
 
 - Парсинг идёт из HTML. Если сайт подгружает товары только через JS на клиенте, данных в HTML может не быть.
+- 
+## Screenshots
+
+![desc1](docs/desc1.png)
+![desc2](docs/desc2.png)
+![mobvers](docs/mobvers.png)
