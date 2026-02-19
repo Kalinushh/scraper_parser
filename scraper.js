@@ -2,21 +2,13 @@ const express = require('express')
 const axios = require('axios')
 const cheerio = require('cheerio')
 const fs = require('fs')
+const path = require('path')
 
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 app.get('/api/parse', async (req, res) => {
-    const {
-        url,
-        product,
-        title,
-        price,
-        image,
-        id,
-        maxPages = 1,
-        pageParam = 'PAGEN_1'
-    } = req.query
+    const { url, product, title, price, image, id, maxPages = 1, pageParam = 'PAGEN_1' } = req.query
 
     if (!url || !product) {
         return res.status(400).json({ error: 'Missing required query parameters: url and product' })
@@ -42,30 +34,10 @@ app.get('/api/parse', async (req, res) => {
                 const $el = $(element)
                 const item = {}
 
-                if (title) {
-                    item.title =
-                        $el.find(title).attr('data-itemname') ||
-                        $el.find(title).text().trim() ||
-                        ''
-                }
-
-                if (price) {
-                    item.price =
-                        $el.find(price).attr('content') ||
-                        $el.find(price).text().trim() ||
-                        ''
-                }
-
-                if (image) {
-                    item.image = $el.find(image).attr('src') || ''
-                }
-
-                if (id) {
-                    item.id =
-                        $el.find(id).attr('data-itemid') ||
-                        $el.find(id).text().trim() ||
-                        ''
-                }
+                if (title) item.title = $el.find(title).attr('data-itemname') || $el.find(title).text().trim() || ''
+                if (price) item.price = $el.find(price).attr('content') || $el.find(price).text().trim() || ''
+                if (image) item.image = $el.find(image).attr('src') || ''
+                if (id) item.id = $el.find(id).attr('data-itemid') || $el.find(id).text().trim() || ''
 
                 products.push(item)
             })
@@ -78,6 +50,11 @@ app.get('/api/parse', async (req, res) => {
 
     res.setHeader('Content-Type', 'application/json')
     res.send(JSON.stringify(products, null, 2))
+})
+
+app.use(express.static(path.join(__dirname, 'frontend', 'dist')))
+app.get(/.*/, (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'))
 })
 
 app.listen(PORT, () => {

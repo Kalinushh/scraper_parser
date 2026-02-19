@@ -5,10 +5,11 @@ type InputProps = {
   value: string
   required?: boolean
   onChange: React.ChangeEventHandler<HTMLInputElement>
+  className?: string
 }
 
 export default function InputUI(props: InputProps): ReactElement {
-  const { name, value, required, onChange } = props
+  const { name, value, required, onChange, className } = props
   return (
     <label htmlFor={name}>
       {`${name}:`}
@@ -19,6 +20,7 @@ export default function InputUI(props: InputProps): ReactElement {
         required={required}
         value={value}
         onChange={onChange}
+        className={className}
       />
     </label>
   )

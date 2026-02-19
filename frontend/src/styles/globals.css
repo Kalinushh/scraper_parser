@@ -1,7 +1,21 @@
 :root {
-    /*  переменные, базовые цвета, размеры */
+  /*  переменные, базовые цвета, размеры */
 }
 
 body {
-    font-family: "Monocraft", monospace;
+  font-family: 'Monocraft', monospace;
+}
+
+@layer components {
+  .border-input {
+    border-width: 8px;
+    border-style: solid;
+    border-image: url(../assets/frInput.png) 10 stretch;
+  }
+
+  .border-button {
+    border-width: 8px;
+    border-style: solid;
+    border-image: url(../assets/frButton.png) 10 stretch;
+  }
 }
