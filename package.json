@@ -1,8 +1,10 @@
 {
   "name": "scraper",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "scraper.js",
   "scripts": {
+    "build": "npm --prefix frontend install && npm --prefix frontend run build",
+    "start": "node scraper.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
